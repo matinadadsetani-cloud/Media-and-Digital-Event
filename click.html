@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<title>فرستنده کلیک</title>
+<script src="/socket.io/socket.io.js"></script>
+<style>
+body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#111827;}
+button{font-size:2rem;padding:1rem 2rem;border-radius:12px;background:#22c55e;border:none;cursor:pointer;color:#fff;}
+</style>
+</head>
+<body>
+<button id="clickBtn">کلیک کنید</button>
+<script>
+const socket = io();
+
+document.getElementById("clickBtn").addEventListener("click", ()=>{
+    socket.emit("click");
+});
+
+socket.on("winner", ({message})=>{
+    alert(message);
+});
+</script>
+</body>
+</html>
